@@ -1,0 +1,15 @@
+{
+  "name": "factorization-diagrams",
+  "authors": [
+    "David Peter <mail@david-peter.de>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "output"
+  ],
+  "dependencies": {
+    "purescript-flare": "^0.1.4"
+  }
+}

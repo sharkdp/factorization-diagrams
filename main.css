@@ -1,0 +1,50 @@
+html, body, input {
+   font-family: 'Roboto Condensed', sans-serif;
+   font-size: 19px;
+   font-weight: 400;
+}
+
+body {
+   margin-left: 40px;
+}
+
+h1 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 40px;
+}
+
+.flare-input label {
+    margin-right: 25px;
+}
+
+input {
+    position: relative;
+    top: 1px;
+    width: 85px;
+    border: 1px;
+    padding-left: 3px;
+    padding-right: 1px;
+    border: 1px solid #435EE8;
+}
+
+input:invalid {
+    background-color: #FF8749;
+}
+
+canvas {
+    margin-top: 20px;
+}
+
+p {
+    width: 600px;
+}
+
+sup {
+    vertical-align: top;
+    font-size: 0.6em;
+}
+
+a {
+    color: #435EE8;
+}
