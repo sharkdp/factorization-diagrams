@@ -1,6 +1,10 @@
 # Factorization diagrams
 
-[Try it here](http://david-peter.de/factorization-diagrams).
+A Purescript version of factorization diagrams.
+
+![Factorization of 105](http://i.imgur.com/bqm4kOO.png)
+
+**[Try the interactive version](http://david-peter.de/factorization-diagrams)**
 
 ## Build
 
