@@ -67,9 +67,9 @@ primeLayout drawing n =
 
 -- | Factor a number and draw the corresponding diagram.
 factorDiagram :: Int -> Drawing
-factorDiagram n = foldl primeLayout initial factors
+factorDiagram n = foldl primeLayout initial (factors n)
   where initial = filled (fillColor black) (circle 0.0 0.0 1.5)
-        factors = (mergeTwos <<< reverse <<< factorize) n
+        factors = factorize >>> reverse >>> mergeTwos
 
 main =
   runFlareDrawing "controls" "canvas" $
@@ -86,4 +86,4 @@ main =
                 | n > max = max
                 | otherwise = n
 
-        draw n = translate c c $ scale s s $ factorDiagram (clamp n)
+        draw = clamp >>> factorDiagram >>> scale s s >>> translate c c
