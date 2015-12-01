@@ -73,17 +73,10 @@ factorDiagram n = foldl primeLayout initial (factors n)
 
 main =
   runFlareDrawing "controls" "canvas" $
-    draw <$> intRange "Choose a number to factorize:" min max 210
+    draw <$> intRange "Choose a number to factorize:" 1 10000 210
 
   where size = 600.0
         c = size / 2.0
         s = size / 4.3
 
-        min = 1
-        max = 10000
-
-        clamp n | n < min = min
-                | n > max = max
-                | otherwise = n
-
-        draw = clamp >>> factorDiagram >>> scale s s >>> translate c c
+        draw = factorDiagram >>> scale s s >>> translate c c
