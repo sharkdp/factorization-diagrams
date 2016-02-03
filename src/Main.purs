@@ -2,14 +2,14 @@ module Main where
 
 import Prelude
 
-import Data.Array
+import Data.Array (reverse, (..), (:), length, filter, head)
 import Data.Foldable (mconcat, foldl)
 import Data.Int (toNumber)
 import Data.Maybe (maybe)
 
 import Math (cos, sin, pi)
 
-import Flare
+import Flare (intRange)
 import Flare.Drawing
 
 -- | Compute the prime factors of an integer. This is directly ported from
