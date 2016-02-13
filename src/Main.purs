@@ -32,11 +32,11 @@ mergeTwos xs = rest ++ merged num
 
 -- | Colors for different prime factors.
 color :: Int -> Color
-color 3 = rgb 255.0 102.0 190.0
-color 5 = rgb 67.0 94.0 232.0
-color 7 = rgb 86.0 255.0 162.0
-color 11 = rgb 232.0 221.0 67.0
-color 13 = rgb 255.0 135.0 73.0
+color 3 =  rgb 255 102 190
+color 5 =  rgb  67  94 232
+color 7 =  rgb  86 255 162
+color 11 = rgb 232 221  67
+color 13 = rgb 255 135  73
 color _ = white
 
 -- | Draw a colored polygon.
