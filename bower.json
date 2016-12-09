@@ -10,6 +10,6 @@
     "output"
   ],
   "dependencies": {
-    "purescript-flare": "^0.5.0"
+    "purescript-flare": "^2.0.0"
   }
 }

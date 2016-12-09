@@ -3,7 +3,7 @@ module Main where
 import Prelude
 
 import Data.Array (reverse, (..), (:), length, filter, head)
-import Data.Foldable (mconcat, foldl)
+import Data.Foldable (fold, foldl)
 import Data.Int (toNumber)
 import Data.Maybe (maybe)
 
@@ -23,8 +23,8 @@ factorize n = maybe [n] (\a -> a : factorize (n `div` a)) mf
 -- | Merge several factors of two into fours (2 * 2 * 2 * 2 * 2 = 4 * 4 * 2)
 -- | to get a tighter layout for high powers of 2.
 mergeTwos :: Array Int -> Array Int
-mergeTwos xs = rest ++ merged num
-  where rest = filter (/= 2) xs
+mergeTwos xs = rest <> merged num
+  where rest = filter (_ /= 2) xs
         num = length xs - length rest
         merged 0 = []
         merged 1 = [2]
@@ -44,21 +44,21 @@ polygon :: Int -> Drawing
 polygon n = filled (fillColor (color n)) $ closed do
   i <- 0..n
   let theta = 2.0 * pi / (toNumber n) * toNumber i
-  return { x: sin theta, y: - cos theta }
+  pure { x: sin theta, y: - cos theta }
 
 -- | Arrange `n` copies of a `Drawing` in a symmetric way.
 primeLayout :: Drawing -> Int -> Drawing
 primeLayout drawing n =
   polygon n
     <>
-  mconcat do
+  fold do
     i <- 0 .. (n - 1)
     let phi = 2.0 * pi / (toNumber n) * toNumber i + offset n
         theta 4 | i == 1 || i == 2 = pi
                 | otherwise        = 0.0
         theta _ = phi
         translate' = translate (sin phi) (- cos phi)
-    (return <<< translate' <<< rotate (theta n) <<< scale') drawing
+    (pure <<< translate' <<< rotate (theta n) <<< scale') drawing
 
   where s = 1.3 / toNumber n
         scale' = scale s s
@@ -73,7 +73,7 @@ factorDiagram n = foldl primeLayout initial (factors n)
 
 main =
   runFlareDrawing "controls" "canvas" $
-    draw <$> intRange "Choose a number to factorize:" 1 10000 210
+    draw <$> intRange "Factorize:" 1 10000 210
 
   where size = 600.0
         c = size / 2.0
